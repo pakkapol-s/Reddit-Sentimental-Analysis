@@ -77,3 +77,4 @@ The large volume of Neutral (44%) posts in general subreddits (r/cars, r/technol
 
 This figure presents a comprehensive Sentiment Analysis Dashboard composed of three distinct visualizations arranged in a single row for comparative analysis
 
+![Sentimental_analysis_plot](sentimental_plots.png)
