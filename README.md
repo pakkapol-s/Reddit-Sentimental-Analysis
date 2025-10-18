@@ -1,4 +1,4 @@
-# Reddit-Sentimental-Analysis
+# Reddit Sentimental Analysis
 
 # Goal 
 
@@ -78,3 +78,24 @@ The large volume of Neutral (44%) posts in general subreddits (r/cars, r/technol
 This figure presents a comprehensive Sentiment Analysis Dashboard composed of three distinct visualizations arranged in a single row for comparative analysis
 
 ![Sentimental_analysis_plot](sentimental_plots.png)
+
+---
+
+# Challenges Faced and Solutions 
+
+1. Data Collection and API Rate Limiting
+
+Challenge: Collecting a large, diverse, and unbiased sample of posts from Reddit's API (PRAW) was complicated by strict API rate limits. Repeated or overly aggressive requests could lead to temporary bans or missed data points, interrupting the collection process.
+
+Solution: I implemented a robust, asynchronous data collection loop with strategic time.sleep() calls. By adding a small, randomized delay between requests and carefully tracking the number of calls per minute, I ensured the script adhered to PRAW's rate limits, allowing for the successful, continuous collection of 222 high-quality posts from multiple subreddits.
+
+2. Text Cleaning for Sentiment Model Compatibility
+
+Challenge: The raw Reddit data contained noise (e.g., URLs, special characters, non-standard punctuation, and excessive whitespace) that could skew the VADER sentiment scores. 
+
+Solution: I developed a custom Python function using the re (Regular Expression) library. This function systematically performed several critical steps:
+
+- Lowercasing all text for normalization.
+- Removing all URLs and common social media artifacts.
+- Removing all punctuation except for letters and standard spaces (which VADER relies on for emphasis).
+- Consolidating multiple spaces to ensure clean word tokenization. This process ensured the text was clean and perfectly aligned with the VADER lexicon's requirements.
