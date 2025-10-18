@@ -99,3 +99,13 @@ Solution: I developed a custom Python function using the re (Regular Expression)
 - Removing all URLs and common social media artifacts.
 - Removing all punctuation except for letters and standard spaces (which VADER relies on for emphasis).
 - Consolidating multiple spaces to ensure clean word tokenization. This process ensured the text was clean and perfectly aligned with the VADER lexicon's requirements.
+
+3. Creating a Representative Composite Sentiment Score
+
+Challenge: Analyzing the post's title and its body text separately yielded two different sentiment scores (title_sentiment and text_sentiment). A simple average wouldn't be appropriate, as the title often serves as the primary emotional hook and is read by all users, while the body text is often skipped.
+
+Solution: I engineered a weighted composite score. After calculating the sentiment for both the title and the text body separately, I assigned a higher weight to the title: Composite Score=(Title Score×0.6)+(Text Body Score×0.4)
+
+This solution provided a more accurate and representative overall sentiment that reflected the relative importance of the title in driving public perception and engagement.
+
+---
